@@ -1,3 +1,3 @@
-import VSCodeQuickAccess from '../widgets/quick-access.jsx'
+import VSCodeQuickAccessWidget from '../widgets/VSCodeQuickAccessWidget.jsx'
 
-export default VSCodeQuickAccess 
+export default VSCodeQuickAccessWidget 

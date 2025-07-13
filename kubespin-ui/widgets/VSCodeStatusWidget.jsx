@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import styles from './VSCodeStatusWidget.module.css'
 
-const VSCodeStatus = () => {
+const VSCodeStatusWidget = ({ pluginApi }) => {
   const [status, setStatus] = useState('checking')
   const [lastChecked, setLastChecked] = useState(null)
 
@@ -52,60 +53,35 @@ const VSCodeStatus = () => {
   }
 
   return (
-    <div style={{
-      padding: '16px',
-      backgroundColor: 'white',
-      borderRadius: '8px',
-      border: '1px solid #e9ecef',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-    }}>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: '12px'
-      }}>
-        <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '600' }}>
+    <div className={styles.widget}>
+      <div className={styles.header}>
+        <h3 className={styles.title}>
           VS Code Server Status
         </h3>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
-          <span style={{ fontSize: '12px' }}>{getStatusIcon()}</span>
-          <span style={{ 
-            fontSize: '14px', 
-            fontWeight: '500',
-            color: getStatusColor()
-          }}>
+        <div className={styles.status}>
+          <span className={styles.statusIcon}>{getStatusIcon()}</span>
+          <span 
+            className={styles.statusText}
+            style={{ color: getStatusColor() }}
+          >
             {getStatusText()}
           </span>
         </div>
       </div>
       
-      <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>
-        Port: 8080
+      <div className={styles.info}>
+        <div className={styles.infoItem}>Port: 8080</div>
       </div>
       
       {lastChecked && (
-        <div style={{ fontSize: '11px', color: '#999' }}>
+        <div className={styles.lastChecked}>
           Last checked: {lastChecked.toLocaleTimeString()}
         </div>
       )}
       
       <button 
         onClick={checkStatus}
-        style={{
-          marginTop: '8px',
-          padding: '6px 12px',
-          backgroundColor: '#007acc',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '12px'
-        }}
+        className={styles.refreshButton}
       >
         Refresh
       </button>
@@ -113,4 +89,4 @@ const VSCodeStatus = () => {
   )
 }
 
-export default VSCodeStatus 
+export default VSCodeStatusWidget 

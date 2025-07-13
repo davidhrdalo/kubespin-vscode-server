@@ -1,0 +1,166 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.title {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: 5px 0 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.openButton {
+  padding: 12px 24px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.openButton:hover {
+  background-color: #005a9e;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero {
+  margin-bottom: 30px;
+}
+
+.heroIcon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.heroTitle {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.heroDescription {
+  margin-bottom: 30px;
+  color: #666;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.feature {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.featureIcon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.featureTitle {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.featureDescription {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.loadingIcon {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.errorIcon {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ff6b6b;
+}
+
+.errorMessage {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.retryButton {
+  padding: 10px 20px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.retryButton:hover {
+  background-color: #005a9e;
+} 

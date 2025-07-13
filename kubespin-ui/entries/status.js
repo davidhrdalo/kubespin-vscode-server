@@ -1,3 +1,3 @@
-import VSCodeStatus from '../widgets/status.jsx'
+import VSCodeStatusWidget from '../widgets/VSCodeStatusWidget.jsx'
 
-export default VSCodeStatus 
+export default VSCodeStatusWidget 
