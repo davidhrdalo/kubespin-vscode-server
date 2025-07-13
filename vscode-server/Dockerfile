@@ -12,15 +12,6 @@ USER root
 # Create workspace directory with proper permissions
 RUN mkdir -p /workspace && chown coder:coder /workspace
 
-# Install additional tools and extensions
-RUN code-server --install-extension ms-vscode.vscode-typescript-next
-RUN code-server --install-extension ms-vscode.vscode-json
-RUN code-server --install-extension ms-vscode.vscode-python
-RUN code-server --install-extension ms-vscode.vscode-java
-RUN code-server --install-extension ms-vscode.vscode-go
-RUN code-server --install-extension ms-vscode.vscode-rust
-RUN code-server --install-extension ms-vscode.vscode-cpptools
-
 # Switch back to coder user
 USER coder
 
