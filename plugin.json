@@ -105,14 +105,7 @@
         "/ui-assets": "kubespin-ui"
       }
     },
-    "backendInteractions": [
-      {
-        "name": "getVSCodeStatus",
-        "description": "Get VS Code Server status",
-        "endpoint": "/api/status",
-        "method": "GET"
-      }
-    ],
+
     "environmentVariables": [
       {
         "name": "PASSWORD",

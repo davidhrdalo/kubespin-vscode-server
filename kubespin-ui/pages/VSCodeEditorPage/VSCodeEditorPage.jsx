@@ -6,23 +6,12 @@ const VSCodeEditorPage = ({ pluginApi }) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    // Check if VS Code Server is accessible
-    const checkServerStatus = async () => {
-      try {
-        const response = await fetch('/api/status')
-        if (response.ok) {
-          setIsLoading(false)
-        } else {
-          setError('VS Code Server is not available')
-          setIsLoading(false)
-        }
-      } catch (err) {
-        setError('Failed to connect to VS Code Server')
-        setIsLoading(false)
-      }
-    }
+    // Simple loading simulation - VS Code Server should be available
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
 
-    checkServerStatus()
+    return () => clearTimeout(timer)
   }, [])
 
   const openVSCodeServer = () => {

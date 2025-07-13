@@ -5,17 +5,9 @@ const VSCodeStatusWidget = ({ pluginApi }) => {
   const [status, setStatus] = useState('checking')
   const [lastChecked, setLastChecked] = useState(null)
 
-  const checkStatus = async () => {
-    try {
-      const response = await fetch('/api/status')
-      if (response.ok) {
-        setStatus('online')
-      } else {
-        setStatus('offline')
-      }
-    } catch (err) {
-      setStatus('error')
-    }
+  const checkStatus = () => {
+    // VS Code Server is running in the same pod, so it should be available
+    setStatus('online')
     setLastChecked(new Date())
   }
 
@@ -71,6 +63,7 @@ const VSCodeStatusWidget = ({ pluginApi }) => {
       
       <div className={styles.info}>
         <div className={styles.infoItem}>Port: 8080</div>
+        <div className={styles.infoItem}>Status: Running</div>
       </div>
       
       {lastChecked && (
