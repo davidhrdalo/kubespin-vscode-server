@@ -1,0 +1,131 @@
+{
+  "name": "VS Code Server",
+  "version": "1.0.0",
+  "description": "A VS Code Server instance for web-based development",
+  "author": "Kubespin",
+  "platformCompatibility": ">=1.0.0",
+  "config": {
+    "schemaVersion": "2.0",
+    "displayName": "VS Code Server",
+    "description": "A web-based VS Code Server for development",
+    "iconUrl": "/platform-ide-assets/vscode-logo.svg",
+    "requiresPreview": false,
+    "containers": {
+      "vscode-server": {
+        "dockerfile": "./vscode-server/Dockerfile",
+        "ports": [8080],
+        "environment": {
+          "PASSWORD": "vscode",
+          "HASHED_PASSWORD": "",
+          "SUDO_PASSWORD": "vscode",
+          "SUDO_PASSWORD_HASH": "",
+          "DEFAULT_WORKSPACE": "/workspace",
+          "PORT": "8080"
+        },
+        "volumes": ["/workspace"],
+        "healthCheck": {
+          "type": "http",
+          "path": "/",
+          "port": 8080,
+          "interval": "30s",
+          "retries": 3
+        }
+      }
+    },
+    "ui": {
+      "type": "static_assets",
+      "sourceContainer": "kubespin-ui",
+      "components": {
+        "pageView": "/page-view.js"
+      },
+      "rootSidebarLinks": [
+        {
+          "type": "title",
+          "text": "VS Code Server"
+        },
+        {
+          "type": "link",
+          "to": "/plugin/vscode-server/editor",
+          "icon": "FaCode",
+          "text": "Code Editor"
+        },
+        {
+          "type": "divider"
+        }
+      ],
+      "pages": [
+        {
+          "id": "editor",
+          "name": "Code Editor",
+          "description": "Web-based VS Code editor",
+          "component": "/editor.js",
+          "route": "/editor",
+          "icon": "💻",
+          "category": "Development"
+        }
+      ],
+      "homeWidgets": [
+        {
+          "id": "vscode-status",
+          "name": "VS Code Server Status",
+          "description": "Shows current VS Code Server status and connection info",
+          "component": "/status.js",
+          "size": {
+            "width": 2,
+            "height": 1
+          },
+          "priority": 10
+        },
+        {
+          "id": "vscode-quick-access",
+          "name": "Quick Access",
+          "description": "Quick access to VS Code Server",
+          "component": "/quick-access.js",
+          "size": {
+            "width": 2,
+            "height": 1
+          },
+          "priority": 9
+        }
+      ]
+    },
+    "routing": {
+      "subdomain": "vscode-server",
+      "targetContainer": "vscode-server",
+      "targetPort": 8080,
+      "paths": {
+        "/": "vscode-server"
+      }
+    },
+    "backendInteractions": [
+      {
+        "name": "getVSCodeStatus",
+        "description": "Get VS Code Server status",
+        "endpoint": "/api/status",
+        "method": "GET"
+      }
+    ],
+    "environmentVariables": [
+      {
+        "name": "PASSWORD",
+        "default": "vscode",
+        "description": "Password for VS Code Server access"
+      },
+      {
+        "name": "SUDO_PASSWORD",
+        "default": "vscode",
+        "description": "Sudo password for VS Code Server"
+      },
+      {
+        "name": "DEFAULT_WORKSPACE",
+        "default": "/workspace",
+        "description": "Default workspace directory"
+      },
+      {
+        "name": "PORT",
+        "default": "8080",
+        "description": "Port for VS Code Server"
+      }
+    ]
+  }
+} 
