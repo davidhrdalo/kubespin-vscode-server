@@ -1,3 +1,3 @@
-import VSCodePageView from '../pages/editor.jsx'
+import VSCodeEditorPage from '../pages/VSCodeEditorPage/VSCodeEditorPage.jsx'
 
-export default VSCodePageView 
+export default VSCodeEditorPage 
