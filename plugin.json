@@ -30,6 +30,13 @@
           "interval": "30s",
           "retries": 3
         }
+      },
+      "kubespin-ui": {
+        "dockerfile": "./kubespin-ui/Dockerfile",
+        "ports": [80],
+        "environment": {
+          "NODE_ENV": "production"
+        }
       }
     },
     "ui": {
@@ -94,7 +101,8 @@
       "targetContainer": "vscode-server",
       "targetPort": 8080,
       "paths": {
-        "/": "vscode-server"
+        "/": "vscode-server",
+        "/ui-assets": "kubespin-ui"
       }
     },
     "backendInteractions": [
