@@ -98,10 +98,11 @@
     },
     "routing": {
       "subdomain": "vscode-server",
-      "targetContainer": "vscode-server",
-      "targetPort": 8080,
+      "targetContainer": "kubespin-ui",
+      "targetPort": 80,
       "paths": {
-        "/": "vscode-server",
+        "/": "kubespin-ui",
+        "/vscode": "vscode-server",
         "/ui-assets": "kubespin-ui"
       }
     },
